@@ -6,261 +6,529 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./public/icons/Dream_Level_Ball_Sprite.png">
 
     <style>
     body {
         font-family: 'Poppins', sans-serif;
     }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Custom animations */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-10px) rotate(1deg); }
+        66% { transform: translateY(5px) rotate(-1deg); }
+    }
+    
+    @keyframes glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+        50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3); }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-glow {
+        animation: glow 2s ease-in-out infinite;
+    }
+    
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    /* Glassmorphism effect */
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Custom gradients */
+    .hero-gradient {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .card-gradient {
+        background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    }
     </style>
 
     <title>Level Ball Format</title>
 </head>
-<body class="flex flex-col bg-gray-200">
+<body class="flex flex-col bg-slate-50">
 
-    <div class="px-[37.5%] bg-gray-200 text-center pt-6 pb-3 text-3xl flex justify-center">
-        <img class="min-w-[250px] object-scale-down" src="./public/assets/Level-ball-Format-Text.png" alt="Level Ball Format Logo">
-    </div>
-
-    <div class="description-container px-[5%] py-3 bg-gray-200 text-center text-xl">
-        <div class="mb-3 font-semibold">Welcome to the Level Ball Format.</div>
-        <div>A fun deck-building puzzle and a way to highlight some under-utilised cards all focussed around Pokemon with 90HP or less!</div>
-    </div>
-
-    <!-- <hr class="mx-8 border-gray-300 border my-3"> -->
-
-    <div class="rules-container px-[5%] pt-6 pb-8 bg-gray-100 text-gray-900">
-        <h2 class="underline text-3xl font-bold text-center mb-4">Rules</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="bg-gray-300 rounded-lg text-gray-800 text-lg font-semibold p-4 flex justify-center text-center items-center shadow-md">
-                You may only use Pokemon with 90HP or less. 
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex flex-col justify-center items-center text-white px-4 relative overflow-hidden">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-20 animate-float"></div>
+            <div class="absolute top-40 right-20 w-16 h-16 bg-blue-400 rounded-full opacity-20 animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-32 left-20 w-12 h-12 bg-red-400 rounded-full opacity-20 animate-float" style="animation-delay: 4s;"></div>
+            <div class="absolute bottom-20 right-10 w-24 h-24 bg-green-400 rounded-full opacity-20 animate-float" style="animation-delay: 1s;"></div>
+        </div>
+        
+        <div class="relative z-10 text-center max-w-4xl mx-auto">
+            <div class="mb-8 animate-fade-in-up">
+                <img class="w-80 md:w-96 mx-auto animate-glow" src="./public/assets/Level-ball-Format-Text.png" alt="Level Ball Format Logo">
             </div>
-            <div class="bg-gray-300 rounded-lg text-gray-800 text-lg font-semibold p-4 flex justify-center text-center items-center shadow-md">
-                You cannot use Rule-Box or ACE SPECs cards. 
+            
+            <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                Master the Art of <span class="text-yellow-300">Small Pokémon</span> Strategy
+            </h1>
+            
+            <p class="text-lg md:text-xl lg:text-2xl mb-8 text-blue-100 animate-fade-in-up" style="animation-delay: 0.4s;">
+                Discover a unique deck-building challenge focused on Pokémon with 90HP or less. 
+                Unleash the power of underutilized cards in this innovative format!
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up" style="animation-delay: 0.6s;">
+                <a href="#rules" class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+                    🎮 Start Building Decks
+                </a>
+                <a href="#rules" class="glass text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:bg-white hover:bg-opacity-20">
+                    📖 Learn the Rules
+                </a>
             </div>
-            <div class="bg-gray-300 rounded-lg text-gray-800 text-lg font-semibold p-4 flex justify-center text-center items-center shadow-md">
-                You may only use 3 cards of the same name in your deck (instead of the usual 4).
-            </div>
-            <div class="bg-gray-300 rounded-lg text-gray-800 text-lg font-semibold p-4 flex justify-center text-center items-center shadow-md">
-                You may only use cards indicated from F-On (Scarlet and Violet onwards)
+            
+            <!-- Stats section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 animate-fade-in-up" style="animation-delay: 0.8s;">
+                <div class="glass rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-yellow-300">500+</div>
+                    <div class="text-sm text-blue-100">Playable Pokémon</div>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-yellow-300">20+</div>
+                    <div class="text-sm text-blue-100">Viable Archetypes</div>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-yellow-300">∞</div>
+                    <div class="text-sm text-blue-100">Strategic Possibilities</div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- <hr class="mx-8 border-gray-300 border my-3"> -->
-
-    <div class="type-support-container flex flex-col justify-center bg-gradient-to-r from-green-300 to-green-400 pt-6">
-
-        <h2 class="underline text-3xl font-bold text-center mb-4">Key Type Support</h2>
-
-        <div class="bg-gradient-to-r from-green-300 to-green-400 px-[5%] py-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col justify-center items-center md:w-1/2">
-                <div class="flex items-center mb-4">
-                    <img class="max-h-[28px] px-4" src="./public/icons/grass.png" alt="grass type icon">
-                    <div class="font-bold flex justify-center items-center text-2xl text-green-900">Grass</div>
-                    <img class="max-h-[28px] px-4" src="./public/icons/grass.png" alt="grass type icon">
-                </div>
-                <div class="text-green-800 text-lg text-center">
-                    Grass type benefits from having access to some of the best type-specific ball search in Bug Catching Set, making it one of the more consistent types in the format.
-                </div>
-            </div>
-            <div class="flex flex-wrap gap-4 justify-center items-center grow">
-                <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Bug-Catching-Set.png" alt="Bug Catching Set card">
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white rounded-full mt-2"></div>
             </div>
         </div>
+    </section>
 
-        <div class="bg-gradient-to-r from-red-300 to-red-400 px-[5%] py-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col justify-center items-center md:w-1/2">
-                <div class="flex items-center mb-4">
-                    <img class="max-h-[28px] px-4" src="./public/icons/fire.png" alt="fire type icon">
-                    <div class="font-bold flex justify-center items-center text-2xl text-red-900">Fire</div>
-                    <img class="max-h-[28px] px-4" src="./public/icons/fire.png" alt="fire type icon">
+    <!-- Welcome Section -->
+    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-16 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                Welcome to the <span class="text-blue-600">Level Ball Format</span>
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                A fun deck-building puzzle and a way to highlight some under-utilised cards all focussed around Pokemon with 90HP or less!
+            </p>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section id="rules" class="bg-gradient-to-br from-purple-50 to-pink-100 py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-800">
+                📋 <span class="text-purple-600">Format Rules</span>
+            </h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Master these simple rules to dominate the Level Ball Format</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card-gradient rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-purple-200">
+                    <div class="text-4xl mb-4 text-center">🎯</div>
+                    <div class="text-gray-800 text-lg font-semibold text-center leading-relaxed">
+                        You may only use Pokemon with <span class="text-purple-600 font-bold">90HP or less</span>
+                    </div>
                 </div>
-                <div class="text-red-800 text-lg text-center">
-                    Fire type decks are able to use the Supporter Mela, helping them reload attackers quickly. In a format without much acceleration, this can be important for keeping the tempo of the game in your favour.
+                <div class="card-gradient rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-purple-200">
+                    <div class="text-4xl mb-4 text-center">🚫</div>
+                    <div class="text-gray-800 text-lg font-semibold text-center leading-relaxed">
+                        You cannot use <span class="text-red-600 font-bold">Rule-Box or ACE SPECs</span> cards
+                    </div>
                 </div>
-            </div>
-            <div class="flex flex-wrap gap-4 justify-center items-center grow">
-                <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Mela.png" alt="Mela card">
+                <div class="card-gradient rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-purple-200">
+                    <div class="text-4xl mb-4 text-center">3️⃣</div>
+                    <div class="text-gray-800 text-lg font-semibold text-center leading-relaxed">
+                        You may only use <span class="text-blue-600 font-bold">3 cards of the same name</span> in your deck (instead of the usual 4)
+                    </div>
+                </div>
+                <div class="card-gradient rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-purple-200">
+                    <div class="text-4xl mb-4 text-center">📅</div>
+                    <div class="text-gray-800 text-lg font-semibold text-center leading-relaxed">
+                        You may only use cards indicated from <span class="text-green-600 font-bold">F-On</span> (Scarlet and Violet onwards)
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="bg-gradient-to-r from-blue-300 to-blue-400 px-[5%] py-6 gap-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col justify-center items-center md:w-1/2">
-                <div class="flex items-center mb-4">
-                    <img class="max-h-[28px] px-4" src="./public/icons/water.png" alt="water type icon">
-                    <div class="font-bold flex justify-center items-center text-2xl text-blue-900">Water</div>
-                    <img class="max-h-[28px] px-4" src="./public/icons/water.png" alt="water type icon">
+    <!-- Type Support Section -->
+    <section id="types" class="bg-gradient-to-br from-gray-50 to-blue-50 py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-800">
+                ⚡ <span class="text-blue-600">Key Type Support</span>
+            </h2>
+            <p class="text-center text-gray-600 mb-16 text-lg">Discover the unique advantages each Pokemon type brings to the Level Ball Format</p>
+
+            <div class="space-y-8">
+                <!-- Grass Type -->
+                <div class="bg-gradient-to-r from-green-400 to-emerald-500 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="flex items-center justify-center md:justify-start mb-6">
+                                <img class="h-10 w-10 mx-3" src="./public/icons/grass.png" alt="grass type icon">
+                                <h3 class="text-3xl font-bold text-white">Grass</h3>
+                                <img class="h-10 w-10 mx-3" src="./public/icons/grass.png" alt="grass type icon">
+                            </div>
+                            <p class="text-green-50 text-lg leading-relaxed">
+                                Grass type benefits from having access to some of the best type-specific ball search in Bug Catching Set, making it one of the more consistent types in the format.
+                            </p>
+                        </div>
+                        <div class="flex justify-center">
+                            <img class="w-48 md:w-56 shadow-2xl rounded-2xl transition-transform duration-300 hover:scale-110 hover:rotate-2" src="./public/cards/Bug-Catching-Set.png" alt="Bug Catching Set card">
+                        </div>
+                    </div>
                 </div>
-                <div class="text-blue-800 text-lg text-center">
-                    Calamitous Snowy Mountain is the perfect stadium for Water type decks as they have plenty of Pokemon that like to deal bench damage and spread counters on the opponent's board.
+
+                <!-- Fire Type -->
+                <div class="bg-gradient-to-r from-red-400 to-orange-500 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="flex items-center justify-center md:justify-start mb-6">
+                                <img class="h-10 w-10 mx-3" src="./public/icons/fire.png" alt="fire type icon">
+                                <h3 class="text-3xl font-bold text-white">Fire</h3>
+                                <img class="h-10 w-10 mx-3" src="./public/icons/fire.png" alt="fire type icon">
+                            </div>
+                            <p class="text-red-50 text-lg leading-relaxed">
+                                Fire type decks are able to use the Supporter Mela, helping them reload attackers quickly. In a format without much acceleration, this can be important for keeping the tempo of the game in your favour.
+                            </p>
+                        </div>
+                        <div class="flex justify-center">
+                            <img class="w-48 md:w-56 shadow-2xl rounded-2xl transition-transform duration-300 hover:scale-110 hover:rotate-2" src="./public/cards/Mela.png" alt="Mela card">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="flex flex-wrap gap-4 justify-center items-center grow">
-                <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Calamitous-Snowy-Mountain.png" alt="Calamitous Snowy Mountain card">
+
+                <!-- Water Type -->
+                <div class="bg-gradient-to-r from-blue-400 to-cyan-500 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="flex items-center justify-center md:justify-start mb-6">
+                                <img class="h-10 w-10 mx-3" src="./public/icons/water.png" alt="water type icon">
+                                <h3 class="text-3xl font-bold text-white">Water</h3>
+                                <img class="h-10 w-10 mx-3" src="./public/icons/water.png" alt="water type icon">
+                            </div>
+                            <p class="text-blue-50 text-lg leading-relaxed">
+                                Calamitous Snowy Mountain is the perfect stadium for Water type decks as they have plenty of Pokemon that like to deal bench damage and spread counters on the opponent's board.
+                            </p>
+                        </div>
+                        <div class="flex justify-center">
+                            <img class="w-48 md:w-56 shadow-2xl rounded-2xl transition-transform duration-300 hover:scale-110 hover:rotate-2" src="./public/cards/Calamitous-Snowy-Mountain.png" alt="Calamitous Snowy Mountain card">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightning Type -->
+                <div class="bg-gradient-to-r from-yellow-400 to-amber-500 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="flex items-center justify-center md:justify-start mb-6">
+                                <img class="h-10 w-10 mx-3" src="./public/icons/electric.png" alt="lightning type icon">
+                                <h3 class="text-3xl font-bold text-gray-800">Lightning</h3>
+                                <img class="h-10 w-10 mx-3" src="./public/icons/electric.png" alt="lightning type icon">
+                            </div>
+                            <p class="text-yellow-900 text-lg leading-relaxed">
+                                Electric Generator is just as strong in the Level Ball Format as it is in the Standard Format, allowing fast paced strategies to be the key to success with Lightning Types.
+                            </p>
+                        </div>
+                        <div class="flex justify-center">
+                            <img class="w-48 md:w-56 shadow-2xl rounded-2xl transition-transform duration-300 hover:scale-110 hover:rotate-2" src="./public/cards/Electric-Generator.png" alt="Electric Generator card">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Psychic Type -->
+                <div class="bg-gradient-to-r from-purple-400 to-pink-500 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="flex items-center justify-center md:justify-start mb-6">
+                                <img class="h-10 w-10 mx-3" src="./public/icons/psychic.png" alt="psychic type icon">
+                                <h3 class="text-3xl font-bold text-white">Psychic</h3>
+                                <img class="h-10 w-10 mx-3" src="./public/icons/psychic.png" alt="psychic type icon">
+                            </div>
+                            <p class="text-purple-50 text-lg leading-relaxed">
+                                The Psychic Type has some great healing in Moonlit Hill, which in turn works perfectly with the Supporter Tulip to recover any Psychic Energy and Pokemon that may be in the Discard Pile.
+                            </p>
+                        </div>
+                        <div class="flex justify-center gap-4">
+                            <img class="w-40 md:w-48 shadow-2xl rounded-2xl transition-transform duration-300 hover:scale-110 hover:rotate-2" src="./public/cards/Tulip.png" alt="Tulip card">
+                            <img class="w-40 md:w-48 shadow-2xl rounded-2xl transition-transform duration-300 hover:scale-110 hover:rotate-2" src="./public/cards/Moonlit-Hill.png" alt="Moonlit Hill card">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fighting Type -->
+                <div class="bg-gradient-to-r from-orange-500 to-red-600 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="flex items-center justify-center md:justify-start mb-6">
+                                <img class="h-10 w-10 mx-3" src="./public/icons/fighting.png" alt="fighting type icon">
+                                <h3 class="text-3xl font-bold text-white">Fighting</h3>
+                                <img class="h-10 w-10 mx-3" src="./public/icons/fighting.png" alt="fighting type icon">
+                            </div>
+                            <p class="text-orange-50 text-lg leading-relaxed">
+                                Fighting Pokemon can either work on being really bulky with the Rock Chestplate Tool card, making them very hard to KO, or disruptive with the Calamitous Wasteland Stadium locking things in your opponent's Active Spot.
+                            </p>
+                        </div>
+                        <div class="flex justify-center gap-4">
+                            <img class="w-40 md:w-48 shadow-2xl rounded-2xl transition-transform duration-300 hover:scale-110 hover:rotate-2" src="./public/cards/Rock-Chestplate.png" alt="Rock Chestplate card">
+                            <img class="w-40 md:w-48 shadow-2xl rounded-2xl transition-transform duration-300 hover:scale-110 hover:rotate-2" src="./public/cards/Calamitous-Wasteland.png" alt="Calamitous Wasteland card">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Darkness Type -->
+                <div class="bg-gradient-to-r from-gray-700 to-gray-900 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="flex items-center justify-center md:justify-start mb-6">
+                                <img class="h-10 w-10 mx-3" src="./public/icons/dark.png" alt="darkness type icon">
+                                <h3 class="text-3xl font-bold text-white">Darkness</h3>
+                                <img class="h-10 w-10 mx-3" src="./public/icons/dark.png" alt="darkness type icon">
+                            </div>
+                            <p class="text-gray-200 text-lg leading-relaxed">
+                                Another type with great acceleration is Darkness, harnessing Janine's Secret Art to power up 2 Darkness Pokemon at once!
+                            </p>
+                        </div>
+                        <div class="flex justify-center">
+                            <img class="w-48 md:w-56 shadow-2xl rounded-2xl transition-transform duration-300 hover:scale-110 hover:rotate-2" src="./public/cards/Janine's-Secret-Art.png" alt="Janine's Secret Art card">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metal Type -->
+                <div class="bg-gradient-to-r from-gray-400 to-slate-600 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="flex items-center justify-center md:justify-start mb-6">
+                                <img class="h-10 w-10 mx-3" src="./public/icons/meetal.png" alt="metal type icon">
+                                <h3 class="text-3xl font-bold text-white">Metal</h3>
+                                <img class="h-10 w-10 mx-3" src="./public/icons/meetal.png" alt="metal type icon">
+                            </div>
+                            <p class="text-gray-100 text-lg leading-relaxed">
+                                Metal Pokemon maintain their tanky nature with the Full Metal Lab Stadium. This can make spread strategies particularly difficult to play against wide Metal Benches.
+                            </p>
+                        </div>
+                        <div class="flex justify-center">
+                            <img class="w-48 md:w-56 shadow-2xl rounded-2xl transition-transform duration-300 hover:scale-110 hover:rotate-2" src="./public/cards/Full-Metal-Lab.png" alt="Full Metal Lab card">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="bg-gradient-to-r from-yellow-200 to-yellow-300 px-[5%] py-6 gap-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col justify-center items-center md:w-1/2">
-                <div class="flex items-center mb-4">
-                    <img class="max-h-[28px] px-4" src="./public/icons/electric.png" alt="lightning type icon">
-                    <div class="font-bold flex justify-center items-center text-2xl text-yellow-900">Lightning</div>
-                    <img class="max-h-[28px] px-4" src="./public/icons/electric.png" alt="lightning type icon">
+    <!-- Archetypes Section -->
+    <section id="archetypes" class="bg-gradient-to-br from-indigo-50 to-purple-100 py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-800">
+                🏆 <span class="text-indigo-600">Example Archetypes</span>
+            </h2>
+            <p class="text-center text-gray-600 mb-16 text-lg">Explore proven deck strategies that dominate the Level Ball Format meta</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Festival Lead -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-green-200">
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">🌿 Festival Lead</h3>
+                        <div class="w-12 h-1 bg-green-500 mx-auto rounded-full"></div>
+                    </div>
+                    <div class="flex justify-center gap-3 mb-4">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Dipplin.png" alt="Dipplin card">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Festival-Grounds.png" alt="Festival Grounds card">
+                    </div>
+                    <p class="text-gray-600 text-sm text-center">A grass-type archetype focusing on Festival Grounds synergy</p>
                 </div>
-                <div class="text-yellow-800 text-lg text-center">
-                    Electric Generator is just as strong in the Level Ball Format as it is in the Standard Format, allowing fast paced strategies to be the key to success with Lightning Types.
+
+                <!-- Flutter Mane Spread -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-purple-200">
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">🔮 Flutter Mane Spread</h3>
+                        <div class="w-12 h-1 bg-purple-500 mx-auto rounded-full"></div>
+                    </div>
+                    <div class="flex justify-center gap-3 mb-4">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Flutter-Mane.png" alt="Flutter Mane card">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Starmie.png" alt="Starmie card">
+                    </div>
+                    <p class="text-gray-600 text-sm text-center">Psychic spread damage strategy with consistent setup</p>
+                </div>
+
+                <!-- Venomoth Control -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-green-200">
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">🦋 Venomoth Control</h3>
+                        <div class="w-12 h-1 bg-green-600 mx-auto rounded-full"></div>
+                    </div>
+                    <div class="flex justify-center gap-3 mb-4">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Venomoth.png" alt="Venomoth card">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Ariados.png" alt="Araidos card">
+                    </div>
+                    <p class="text-gray-600 text-sm text-center">Control-focused grass deck with powerful disruption</p>
+                </div>
+
+                <!-- Wugtrio Mill -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-blue-200">
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">🌊 Wugtrio Mill</h3>
+                        <div class="w-12 h-1 bg-blue-500 mx-auto rounded-full"></div>
+                    </div>
+                    <div class="flex justify-center gap-3 mb-4">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Wugtrio.png" alt="Wugtrio card">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Reversal-Energy.png" alt="Reversal-Energy card">
+                    </div>
+                    <p class="text-gray-600 text-sm text-center">Mill strategy that forces deck exhaustion</p>
+                </div>
+
+                <!-- Jumpluff Rabsca -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-green-200">
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">🌸 Jumpluff Rabsca</h3>
+                        <div class="w-12 h-1 bg-green-400 mx-auto rounded-full"></div>
+                    </div>
+                    <div class="flex justify-center gap-3 mb-4">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Jumpluff.png" alt="Jumpluff card">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Rabsca.png" alt="Rabsca card">
+                    </div>
+                    <p class="text-gray-600 text-sm text-center">Synergistic grass combo with recycling effects</p>
+                </div>
+
+                <!-- Froslass Spread -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-blue-200">
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">❄️ Froslass Spread</h3>
+                        <div class="w-12 h-1 bg-blue-400 mx-auto rounded-full"></div>
+                    </div>
+                    <div class="flex justify-center gap-3 mb-4">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Froslass.png" alt="Froslass card">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Emolga.png" alt="Emolga card">
+                    </div>
+                    <p class="text-gray-600 text-sm text-center">Water spread deck with freezing control</p>
+                </div>
+
+                <!-- Iron Bundle Hit'n'Run -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-blue-200">
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">🚀 Iron Bundle Hit'n'Run</h3>
+                        <div class="w-12 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                    </div>
+                    <div class="flex justify-center gap-3 mb-4">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Iron-Bundle.png" alt="Iron Bundle card">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Future-Booster-Energy-Capsule.png" alt="Future Booster Energy Capsule card">
+                    </div>
+                    <p class="text-gray-600 text-sm text-center">Fast water aggro with future energy acceleration</p>
+                </div>
+
+                <!-- United Wings -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200">
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">🪶 United Wings</h3>
+                        <div class="w-12 h-1 bg-gray-500 mx-auto rounded-full"></div>
+                    </div>
+                    <div class="flex justify-center gap-3 mb-4">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Murkrow.png" alt="Murkrow card">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Wattrel.png" alt="Wattrel card">
+                    </div>
+                    <p class="text-gray-600 text-sm text-center">Flying-type synergy with colorless flexibility</p>
+                </div>
+
+                <!-- Grafaiai -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200">
+                    <div class="text-center mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">🎨 Grafaiai</h3>
+                        <div class="w-12 h-1 bg-gray-600 mx-auto rounded-full"></div>
+                    </div>
+                    <div class="flex justify-center gap-3 mb-4">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Grafaiai.png" alt="Grafaiai card">
+                        <img class="w-24 h-36 shadow-lg rounded-xl transition-transform duration-300 hover:scale-110 hover:rotate-3" src="./public/cards/Earthen-Vessel.png" alt="Earthen Vessel card">
+                    </div>
+                    <p class="text-gray-600 text-sm text-center">Colorless deck with creative energy solutions</p>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-4 justify-center items-center grow">
-                <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Electric-Generator.png" alt="Electric Generator card">
+            
+            <!-- Call to action for more archetypes -->
+            <div class="text-center bg-gradient-to-r from-purple-500 to-pink-600 rounded-3xl p-8 text-white">
+                <h3 class="text-2xl font-bold mb-4">🔮 ...and plenty more yet to be uncovered!</h3>
+                <p class="text-lg mb-6 text-purple-100">The Level Ball Format meta is constantly evolving. What new strategies will you discover?</p>
+                <button class="bg-white text-purple-600 font-bold py-3 px-8 rounded-full hover:bg-purple-50 transition-all duration-300 transform hover:scale-105">
+                    🎯 Explore More Decks
+                </button>
             </div>
         </div>
+    </section>
 
-        <div class="bg-gradient-to-r from-purple-300 to-purple-400 px-[5%] py-6 gap-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col justify-center items-center md:w-1/2">
-                <div class="flex items-center mb-4">
-                    <img class="max-h-[28px] px-4" src="./public/icons/psychic.png" alt="psychic type icon">
-                    <div class="font-bold flex justify-center items-center text-2xl text-purple-900">Psychic</div>
-                    <img class="max-h-[28px] px-4" src="./public/icons/psychic.png" alt="psychic type icon">
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <!-- Logo and description -->
+                <div class="text-center md:text-left">
+                    <img class="w-32 mx-auto md:mx-0 mb-4 filter brightness-0 invert" src="./public/assets/Level-ball-Format-Text.png" alt="Level Ball Format Logo">
+                    <p class="text-gray-300 text-sm">
+                        The ultimate small Pokémon format for strategic deck builders.
+                    </p>
                 </div>
-                <div class="text-purple-800 text-lg text-center">
-                    The Psychic Type has some great healing in Moonlit Hill, which in turn works perfectly with the Supporter Tulip to recover any Psychic Energy and Pokemon that may be in the Discard Pile.
+                
+                <!-- Quick links -->
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold mb-4 text-yellow-300">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="#rules" class="block text-gray-300 hover:text-yellow-300 transition-colors duration-200">📋 Rules</a>
+                        <a href="#types" class="block text-gray-300 hover:text-yellow-300 transition-colors duration-200">⚡ Type Support</a>
+                        <a href="#archetypes" class="block text-gray-300 hover:text-yellow-300 transition-colors duration-200">🏆 Archetypes</a>
+                    </div>
+                </div>
+                
+                <!-- Contact and social -->
+                <div class="text-center md:text-right">
+                    <h4 class="text-lg font-semibold mb-4 text-yellow-300">Connect</h4>
+                    <div class="space-y-3">
+                        <a href="https://x.com/joldilockss" target="_blank" class="inline-flex items-center text-gray-300 hover:text-blue-400 transition-colors duration-200">
+                            <span class="mr-2">🐦</span> Follow on X
+                        </a>
+                        <a href="mailto:jolddev@gmail.com" class="block text-gray-300 hover:text-yellow-300 transition-colors duration-200">
+                            <span class="mr-2">✉️</span> Contact Us
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-4 justify-center items-center grow">
-                <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Tulip.png" alt="Tulip card">
-                <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Moonlit-Hill.png" alt="Moonlit Hill card">
+            
+            <!-- Bottom bar -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 Level Ball Format. Created with ❤️ for the Pokémon TCG community.
+                </p>
             </div>
         </div>
-
-        <div class="bg-gradient-to-r from-orange-300 to-orange-400 px-[5%] py-6 gap-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col justify-center items-center md:w-1/2">
-                <div class="flex items-center mb-4">
-                    <img class="max-h-[28px] px-4" src="./public/icons/fighting.png" alt="fighting type icon">
-                    <div class="font-bold flex justify-center items-center text-2xl text-orange-900">Fighting</div>
-                    <img class="max-h-[28px] px-4" src="./public/icons/fighting.png" alt="fighting type icon">
-                </div>
-                <div class="text-orange-800 text-lg text-center">
-                    Fighting Pokemon can either work on being really bulky with the Rock Chestplate Tool card, making them very hard to KO, or disruptive with the Calamitous Wasteland Stadium locking things in your opponent's Active Spot.
-                </div>
-            </div>
-            <div class="flex flex-wrap gap-4 justify-center items-center grow">
-                <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Rock-Chestplate.png" alt="Rock Chestplate card">
-                <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Calamitous-Wasteland.png" alt="Calamitous Wasteland card">
-            </div>
-        </div>
-
-        <div class="bg-gradient-to-r from-slate-400 to-slate-500 px-[5%] py-6 gap-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col justify-center items-center md:w-1/2">
-                <div class="flex items-center mb-4">
-                    <img class="max-h-[28px] px-4" src="./public/icons/dark.png" alt="darkness type icon">
-                    <div class="font-bold flex justify-center items-center text-2xl text-slate-900">Darkness</div>
-                    <img class="max-h-[28px] px-4" src="./public/icons/dark.png" alt="darkness type icon">
-                </div>
-                <div class="text-slate-800 text-lg text-center">
-                    Another type with great acceleration is Darkness, harnessing Janine's Secret Art to power up 2 Darkness Pokemon at once!
-                </div>
-            </div>
-            <div class="flex flex-wrap gap-4 justify-center items-center grow">
-                <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Janine's-Secret-Art.png" alt="Janine's Secret Art card">
-            </div>
-        </div>
-
-        <div class="bg-gradient-to-r from-gray-300 to-gray-400 px-[5%] py-6 gap-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col justify-center items-center md:w-1/2">
-                <div class="flex items-center mb-4">
-                    <img class="max-h-[28px] px-4" src="./public/icons/meetal.png" alt="metal type icon">
-                    <div class="font-bold flex justify-center items-center text-2xl text-gray-900">Metal</div>
-                    <img class="max-h-[28px] px-4" src="./public/icons/meetal.png" alt="metal type icon">
-                </div>
-                <div class="text-gray-800 text-lg text-center">
-                    Metal Pokemon maintain their tanky nature with the Full Metal Lab Stadium. This can make spread strategies particularly difficult to play against wide Metal Benches.
-                </div>
-            </div>
-            <div class="flex flex-wrap gap-4 justify-center items-center grow">
-                <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Full-Metal-Lab.png" alt="Full Metal Lab card">
-            </div>
-        </div>
-
-    </div>
-
-    <div class="archetypes-container px-[5%] bg-gray-200 pt-12 mb-16">
-        <h2 class="underline text-3xl font-bold text-center mb-6">Example Archetypes</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-                <div class="font-bold flex justify-center items-center text-2xl text-gray-900 mb-4">Festival Lead</div>
-                <div class="flex flex-wrap gap-4 justify-center items-center">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Dipplin.png" alt="Dipplin card">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Festival-Grounds.png" alt="Festival Grounds card">
-                </div>
-            </div>
-            <div>
-                <div class="font-bold flex justify-center items-center text-2xl text-gray-900 mb-4">Flutter Mane Spread</div>
-                <div class="flex flex-wrap gap-4 justify-center items-center">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Flutter-Mane.png" alt="Flutter Mane card">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Starmie.png" alt="Starmie card">
-                </div>
-            </div>
-            <div>
-                <div class="font-bold flex justify-center items-center text-2xl text-gray-900 mb-4">Venomoth Control</div>
-                <div class="flex flex-wrap gap-4 justify-center items-center">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Venomoth.png" alt="Venomoth card">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Ariados.png" alt="Araidos card">
-                </div>
-            </div>
-            <div>
-                <div class="font-bold flex justify-center items-center text-2xl text-gray-900 mb-4">Wugtrio Mill</div>
-                <div class="flex flex-wrap gap-4 justify-center items-center">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Wugtrio.png" alt="Wugtrio card">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Reversal-Energy.png" alt="Reversal-Energy card">
-                </div>
-            </div>
-            <div>
-                <div class="font-bold flex justify-center items-center text-2xl text-gray-900 mb-4">Jumpluff Rabsca</div>
-                <div class="flex flex-wrap gap-4 justify-center items-center">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Jumpluff.png" alt="Jumpluff card">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Rabsca.png" alt="Rabsca card">
-                </div>
-            </div>
-            <div>
-                <div class="font-bold flex justify-center items-center text-2xl text-gray-900 mb-4">Froslass Spread</div>
-                <div class="flex flex-wrap gap-4 justify-center items-center">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Froslass.png" alt="Froslass card">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Emolga.png" alt="Emolga card">
-                </div>
-            </div>
-            <div>
-                <div class="font-bold flex justify-center items-center text-2xl text-gray-900 mb-4">Iron Bundle Hit'n'Run</div>
-                <div class="flex flex-wrap gap-4 justify-center items-center">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Iron-Bundle.png" alt="Iron Bundle card">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Future-Booster-Energy-Capsule.png" alt="Future Booster Energy Capsule card">
-                </div>
-            </div>
-            <div>
-                <div class="font-bold flex justify-center items-center text-2xl text-gray-900 mb-4">United Wings</div>
-                <div class="flex flex-wrap gap-4 justify-center items-center">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Murkrow.png" alt="Murkrow card">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Wattrel.png" alt="Wattrel card">
-                </div>
-            </div>
-            <div>
-                <div class="font-bold flex justify-center items-center text-2xl text-gray-900 mb-4">Grafaiai</div>
-                <div class="flex flex-wrap gap-4 justify-center items-center">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Grafaiai.png" alt="Grafaiai card">
-                    <img class="min-w-[250px] md:min-w-0 w-[17vw] flex shadow-lg rounded-lg transition hover:scale-[1.1] hover:-translate-y-2" src="./public/cards/Earthen-Vessel.png" alt="Earthen Vessel card">
-                </div>
-            </div>
-            <div class="flex items-center justify-center text-2xl mt-6 mx-16 text-center font-bold">
-                ...and plenty more yet to be uncovered!
-            </div>
-        </div>
-    </div>
-
-    <div class="h-16 bg-gray-400 text-white flex justify-center items-center">
-        <a class="hover:underline mr-1" href="https://x.com/joldilockss" target="_blank">Jold.io</a> |<a class="ml-1 hover:underline" href="mailto:jolddev@gmail.com">Contact</a>
-    </div>
+    </footer>
 </body>
 </html>
